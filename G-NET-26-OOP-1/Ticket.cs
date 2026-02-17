@@ -27,7 +27,7 @@ namespace G_NET_26_OOP_1
 
         public double CalcTotal(double taxPercent)
         {
-            return Price + (Price * taxPercent);
+            return Price + (Price * (taxPercent / 100));
         }
 
         public void ApplyDiscount(ref double discountAmount)

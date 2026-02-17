@@ -111,6 +111,64 @@ namespace G_NET_26_OOP_1
                 c. PrintTicket() — prints the full ticket info.
              */
             #endregion
+
+            #region Part 02.2 
+            //Create a Console Application. Read the ticket data from the user, then print output .
+
+            Console.Write("Enter Movie Name: ");
+            string movieName = Console.ReadLine();
+
+            int typeInput;
+            while (!int.TryParse(Console.ReadLine(), out typeInput) || typeInput < 0 || typeInput > 2)
+            {
+                Console.Write("Enter Ticket Type (0 = Standard , 1 = VIP , 2 = IMAX ): ");
+            }
+            TicketType tType = (TicketType)typeInput;
+
+            Console.Write("Enter Seat Row (A, B, C...): ");
+            string rowStr = Console.ReadLine();
+            char row = (!string.IsNullOrEmpty(rowStr) ? rowStr[0] : 'A');
+
+            Console.Write("Enter Seat Number: ");
+            int seatNumber;
+            while (!int.TryParse(Console.ReadLine(), out seatNumber) || seatNumber <= 0)
+            {
+                Console.Write("Invalid seat number. Enter a positive integer: ");
+            }
+
+            Console.Write("Enter Price: ");
+            double price;
+            while (!double.TryParse(Console.ReadLine(), out price) || price < 0)
+            {
+                Console.Write("Invalid price. Enter a non-negative value: ");
+            }
+
+            Console.Write("Enter Discount Amount: ");
+            double discount = 0;
+            while (!double.TryParse(Console.ReadLine(), out discount) || discount < 0)
+            {
+                Console.Write("Invalid discount. Enter a non-negative value: ");
+            }
+
+
+            SeatLocation seat = new SeatLocation(row, seatNumber);
+            Ticket ticket = new Ticket(movieName, tType, seat, price);
+
+            Console.WriteLine();
+            Console.WriteLine("===== Ticket Info =====");
+            ticket.PrintTicket();
+            double taxPercent = 14.0;
+            Console.WriteLine($"Total (14% tax) : {ticket.CalcTotal(taxPercent)}");
+            Console.WriteLine();
+
+            Console.WriteLine("===== After Discount =====");
+            double discountAfter = discount;
+            ticket.ApplyDiscount(ref discountAfter);
+            Console.WriteLine($"Discount Before : {discount}");
+            Console.WriteLine($"Discount After  : {discountAfter}");
+            ticket.PrintTicket();
+            Console.WriteLine($"Total (14% tax): {ticket.CalcTotal(taxPercent)}");
+            #endregion
         }
     }
 }
