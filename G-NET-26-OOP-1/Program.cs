@@ -80,6 +80,37 @@ namespace G_NET_26_OOP_1
              */
             #endregion
             #endregion
+
+            #region Part 02
+            /*Movie Ticket Booking System
+                User Story: You're building a simple Movie Ticket Booking
+                System for a cinema. The system manages ticket types, seat
+                locations, pricing, and payments. Build it as a Console
+                Application that reads data from the user and prints the
+                booking summary.
+                what you need to build :
+                1. Each ticket has a type that can only be one of: Standard, VIP, or IMAX. How
+                would you represent this?
+                2. You need a type to represent a seat location (Row as a char like &#39;A&#39;, &#39;B&#39;, and
+                Number as an int). Should this be a class or a struct? Create it.
+                3. Create a Ticket class with:
+                a. MovieName (public),
+                b. Type (public)
+                c. Seat (public)
+                d. Price (private).
+                Sometimes a ticket is created with all info, sometimes with just the movie
+                name (default type Standard, seat A1, price 50). Handle both without
+                repeating initialization logic.
+                4. Add three methods to the Ticket class:
+                a. CalcTotal() — receives a taxPercent (double), calculates the total
+                after tax and returns it. The original price must stay unchanged.
+                b. ApplyDiscount() — receives a discountAmount (double) . If discount
+                is valid (&gt; 0 and ≤ Price), deducts it from Price and sets
+                discountAmount to 0 (consumed). Otherwise, the discount stays
+                unchanged.
+                c. PrintTicket() — prints the full ticket info.
+             */
+            #endregion
         }
     }
 }
